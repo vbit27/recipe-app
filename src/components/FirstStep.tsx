@@ -2,12 +2,20 @@ import classes from './FirstStep.module.css';
 import React, { useState } from 'react';
 import Button from '../shared/Button';
 import Input from './Input';
+import IconBtn from '../shared/IconBtn';
+import DietSection from './DietSection';
 
 const FirstStep: React.FC<FirstStepProps> = ({ setIngredient, ingredient }) => {
   const [steps, setSteps] = useState({
     first: false,
     second: false,
     third: false,
+  });
+  const [diet, setDiet] = useState({
+    vegan: false,
+    vegetarian: false,
+    gluten: false,
+    ketogenic: false,
   });
 
   const goStepTwo = () => {
@@ -38,7 +46,7 @@ const FirstStep: React.FC<FirstStepProps> = ({ setIngredient, ingredient }) => {
         {!steps.first && (
           <Input ingredient={ingredient} setIngredient={setIngredient} />
         )}
-        {steps.first && <h1>hallo</h1>}
+        {steps.first && <DietSection setDiet={setDiet} diet={diet} />}
       </div>
       <div>
         <Button

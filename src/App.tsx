@@ -3,7 +3,6 @@ import { getRecipe } from './api/RecipeAPI';
 import './App.css';
 import FirstStep from './components/FirstStep';
 import Header from './components/Header';
-import SecondStep from './components/SecondStep';
 
 function App() {
   const [ingredient, setIngredient] = useState<null | string>(null);
