@@ -3,25 +3,15 @@ import { getRecipe } from './api/RecipeAPI';
 import './App.css';
 import FirstStep from './components/FirstStep';
 import Header from './components/Header';
+import SecondStep from './components/SecondStep';
 
 function App() {
   const [ingredient, setIngredient] = useState<null | string>(null);
-  const [steps, setSteps] = useState({
-    first: false,
-    second: false,
-    third: false,
-  });
 
   return (
     <div className="App">
       <Header />
-      {!steps.first && (
-        <FirstStep
-          setIngredient={setIngredient}
-          ingredient={ingredient}
-          setSteps={setSteps}
-        />
-      )}
+      <FirstStep setIngredient={setIngredient} ingredient={ingredient} />
     </div>
   );
 }

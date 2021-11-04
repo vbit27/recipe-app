@@ -1,61 +1,50 @@
 import classes from './FirstStep.module.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Button from '../shared/Button';
+import Input from './Input';
 
-const FirstStep: React.FC<FirstStepProps> = ({
-  setIngredient,
-  ingredient,
-  setSteps,
-}) => {
-  const [input, setInput] = useState('');
+const FirstStep: React.FC<FirstStepProps> = ({ setIngredient, ingredient }) => {
+  const [steps, setSteps] = useState({
+    first: false,
+    second: false,
+    third: false,
+  });
 
-  const addIngridient = () => {
-    if (input) {
-      setIngredient(input);
-      setInput('');
-    }
-  };
-
-  const nextStep = () => {
+  const goStepTwo = () => {
     if (ingredient) {
       setSteps((prevState) => ({ ...prevState, first: true }));
     }
   };
 
+  const goStepThree = () => {
+    setSteps((prevState) => ({ ...prevState, second: true }));
+  };
+
   return (
     <div className={classes.container}>
       <div>
-        <h4>Step 1</h4>
-        <h1>Choose your main ingridient</h1>
+        <h4>
+          {!steps.first ? 'Step One' : steps.first ? 'Step Two' : 'Step three'}
+        </h4>
+        <h1>
+          {!steps.first
+            ? 'Choose your main ingridient'
+            : steps.first
+            ? 'Choose your diet'
+            : 'Choose your meal'}
+        </h1>
       </div>
       <div>
-        {!ingredient ? (
-          <form onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="text"
-              placeholder="eg. eggplant"
-              onChange={(e) => setInput(e.target.value)}
-              value={input}
-            />
-            <button className={classes.inputBtn} onClick={addIngridient}>
-              +
-            </button>
-          </form>
-        ) : (
-          <div>
-            <h6>Your main ingredient is:</h6>
-            <div
-              className={classes.ingredientContainer}
-              onClick={() => setIngredient(null)}
-            >
-              <p>{ingredient}</p>
-              <p>+</p>
-            </div>
-          </div>
+        {!steps.first && (
+          <Input ingredient={ingredient} setIngredient={setIngredient} />
         )}
+        {steps.first && <h1>hallo</h1>}
       </div>
       <div>
-        <Button buttonStyle={'btn--outline'} onClick={nextStep}>
+        <Button
+          buttonStyle={'btn--outline'}
+          onClick={!steps.first ? goStepTwo : goStepThree}
+        >
           {'Next >'}
         </Button>
       </div>
@@ -66,13 +55,6 @@ const FirstStep: React.FC<FirstStepProps> = ({
 interface FirstStepProps {
   setIngredient: React.Dispatch<React.SetStateAction<string | null>>;
   ingredient: string | null;
-  setSteps: React.Dispatch<
-    React.SetStateAction<{
-      first: boolean;
-      second: boolean;
-      third: boolean;
-    }>
-  >;
 }
 
 export default FirstStep;
