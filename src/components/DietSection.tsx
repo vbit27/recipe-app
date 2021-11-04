@@ -2,9 +2,15 @@ import classes from './DietSection.module.css';
 import React, { useState } from 'react';
 import IconBtn from '../shared/IconBtn';
 
-const DietSection: React.FC<DietSectionProps> = ({ setDiet, diet }) => {
+const DietSection: React.FC<DietSectionProps> = ({
+  setSelectedDiet,
+  selectedDiet,
+}) => {
   const toggleDiet = (param: D) => {
-    setDiet((prevState) => ({ ...prevState, [param]: !diet[param] }));
+    setSelectedDiet((prevState) => ({
+      ...prevState,
+      [param]: !selectedDiet[param],
+    }));
   };
 
   return (
@@ -26,7 +32,7 @@ const DietSection: React.FC<DietSectionProps> = ({ setDiet, diet }) => {
 };
 
 interface DietSectionProps {
-  setDiet: React.Dispatch<
+  setSelectedDiet: React.Dispatch<
     React.SetStateAction<{
       vegan: boolean;
       vegetarian: boolean;
@@ -34,7 +40,7 @@ interface DietSectionProps {
       ketogenic: boolean;
     }>
   >;
-  diet: {
+  selectedDiet: {
     vegan: boolean;
     vegetarian: boolean;
     gluten: boolean;

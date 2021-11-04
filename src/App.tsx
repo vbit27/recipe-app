@@ -6,6 +6,7 @@ import Header from './components/Header';
 
 function App() {
   const [ingredient, setIngredient] = useState<null | string>(null);
+  const [diet, setDiet] = useState<string[]>([]);
 
   return (
     <div className="App">
