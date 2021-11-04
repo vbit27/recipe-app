@@ -2,13 +2,12 @@ import classes from './FirstStep.module.css';
 import React, { useEffect, useState } from 'react';
 import Button from '../shared/Button';
 
-const FirstStep: React.FC = () => {
+const FirstStep: React.FC<FirstStepProps> = ({ setIngredient, ingredient }) => {
   const [input, setInput] = useState('');
-  const [ingridient, setIngridient] = useState<null | string>(null);
 
   const addIngridient = () => {
     if (input) {
-      setIngridient(input);
+      setIngredient(input);
       setInput('');
     }
   };
@@ -38,5 +37,10 @@ const FirstStep: React.FC = () => {
     </div>
   );
 };
+
+interface FirstStepProps {
+  setIngredient: React.Dispatch<React.SetStateAction<string | null>>;
+  ingredient: string | null;
+}
 
 export default FirstStep;
