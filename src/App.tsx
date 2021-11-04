@@ -11,7 +11,12 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <FirstStep setIngredient={setIngredient} ingredient={ingredient} />
+      <FirstStep
+        setIngredient={setIngredient}
+        ingredient={ingredient}
+        setDiet={setDiet}
+        diet={diet}
+      />
     </div>
   );
 }

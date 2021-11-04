@@ -4,7 +4,12 @@ import Button from '../shared/Button';
 import Input from './Input';
 import DietSection from './DietSection';
 
-const FirstStep: React.FC<FirstStepProps> = ({ setIngredient, ingredient }) => {
+const FirstStep: React.FC<FirstStepProps> = ({
+  setIngredient,
+  ingredient,
+  setDiet,
+  diet,
+}) => {
   const [steps, setSteps] = useState({
     first: false,
     second: false,
@@ -25,6 +30,13 @@ const FirstStep: React.FC<FirstStepProps> = ({ setIngredient, ingredient }) => {
 
   const goStepThree = () => {
     setSteps((prevState) => ({ ...prevState, second: true }));
+    Object.entries(selectedDiet).forEach(([key, value]) => {
+      //turn object into an array of arrays and loop through them
+      if (value) {
+        setDiet((prevState) => [...prevState, key]);
+      }
+    });
+    console.log(diet);
   };
 
   return (
@@ -67,6 +79,8 @@ const FirstStep: React.FC<FirstStepProps> = ({ setIngredient, ingredient }) => {
 interface FirstStepProps {
   setIngredient: React.Dispatch<React.SetStateAction<string | null>>;
   ingredient: string | null;
+  setDiet: React.Dispatch<React.SetStateAction<string[]>>;
+  diet: string[];
 }
 
 export default FirstStep;
