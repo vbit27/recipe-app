@@ -6,11 +6,22 @@ import Header from './components/Header';
 
 function App() {
   const [ingredient, setIngredient] = useState<null | string>(null);
+  const [steps, setSteps] = useState({
+    first: false,
+    second: false,
+    third: false,
+  });
 
   return (
     <div className="App">
       <Header />
-      <FirstStep setIngredient={setIngredient} ingredient={ingredient} />
+      {!steps.first && (
+        <FirstStep
+          setIngredient={setIngredient}
+          ingredient={ingredient}
+          setSteps={setSteps}
+        />
+      )}
     </div>
   );
 }

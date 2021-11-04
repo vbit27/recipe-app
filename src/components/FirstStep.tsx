@@ -2,13 +2,23 @@ import classes from './FirstStep.module.css';
 import React, { useEffect, useState } from 'react';
 import Button from '../shared/Button';
 
-const FirstStep: React.FC<FirstStepProps> = ({ setIngredient, ingredient }) => {
+const FirstStep: React.FC<FirstStepProps> = ({
+  setIngredient,
+  ingredient,
+  setSteps,
+}) => {
   const [input, setInput] = useState('');
 
   const addIngridient = () => {
     if (input) {
       setIngredient(input);
       setInput('');
+    }
+  };
+
+  const nextStep = () => {
+    if (ingredient) {
+      setSteps((prevState) => ({ ...prevState, first: true }));
     }
   };
 
@@ -45,7 +55,9 @@ const FirstStep: React.FC<FirstStepProps> = ({ setIngredient, ingredient }) => {
         )}
       </div>
       <div>
-        <Button buttonStyle={'btn--outline'}>{'Next >'}</Button>
+        <Button buttonStyle={'btn--outline'} onClick={nextStep}>
+          {'Next >'}
+        </Button>
       </div>
     </div>
   );
@@ -54,6 +66,13 @@ const FirstStep: React.FC<FirstStepProps> = ({ setIngredient, ingredient }) => {
 interface FirstStepProps {
   setIngredient: React.Dispatch<React.SetStateAction<string | null>>;
   ingredient: string | null;
+  setSteps: React.Dispatch<
+    React.SetStateAction<{
+      first: boolean;
+      second: boolean;
+      third: boolean;
+    }>
+  >;
 }
 
 export default FirstStep;
