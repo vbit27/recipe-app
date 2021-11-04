@@ -37,3 +37,23 @@ input:focus {
 .inputBtn:hover {
   color: #fbe0dc;
 }
+
+.ingredientContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0 1rem 0;
+  height: 3rem;
+  width: fit-content;
+  padding: 2rem;
+  min-width: 20rem;
+  background-color: tomato;
+  border-radius: 45px;
+  color: white;
+  cursor: pointer;
+}
+
+.ingredientContainer > * {
+  color: white;
+  font-size: 1.5rem;
+}

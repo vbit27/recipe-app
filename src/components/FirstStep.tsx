@@ -19,17 +19,30 @@ const FirstStep: React.FC<FirstStepProps> = ({ setIngredient, ingredient }) => {
         <h1>Choose your main ingridient</h1>
       </div>
       <div>
-        <form onSubmit={(e) => e.preventDefault()}>
-          <input
-            type="text"
-            placeholder="eg. eggplant"
-            onChange={(e) => setInput(e.target.value)}
-            value={input}
-          />
-          <button className={classes.inputBtn} onClick={addIngridient}>
-            +
-          </button>
-        </form>
+        {!ingredient ? (
+          <form onSubmit={(e) => e.preventDefault()}>
+            <input
+              type="text"
+              placeholder="eg. eggplant"
+              onChange={(e) => setInput(e.target.value)}
+              value={input}
+            />
+            <button className={classes.inputBtn} onClick={addIngridient}>
+              +
+            </button>
+          </form>
+        ) : (
+          <div>
+            <h6>Your main ingredient is:</h6>
+            <div
+              className={classes.ingredientContainer}
+              onClick={() => setIngredient(null)}
+            >
+              <p>{ingredient}</p>
+              <p>+</p>
+            </div>
+          </div>
+        )}
       </div>
       <div>
         <Button buttonStyle={'btn--outline'}>{'Next >'}</Button>
