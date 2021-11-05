@@ -1,8 +1,9 @@
 import classes from './FirstStep.module.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../shared/Button';
 import Input from './Input';
 import DietSection from './DietSection';
+import MealSection from './MealSection';
 
 const FirstStep: React.FC<FirstStepProps> = ({
   setIngredient,
@@ -21,6 +22,12 @@ const FirstStep: React.FC<FirstStepProps> = ({
     gluten: false,
     ketogenic: false,
   });
+  const [selectedMeal, setSelectedMeal] = useState({
+    breakfast: false,
+    lunch: false,
+    dinner: false,
+    snack: false,
+  });
 
   const goStepTwo = () => {
     if (ingredient) {
@@ -30,13 +37,20 @@ const FirstStep: React.FC<FirstStepProps> = ({
 
   const goStepThree = () => {
     setSteps((prevState) => ({ ...prevState, second: true }));
+
+    //turn object into an array of arrays and loop through them
     Object.entries(selectedDiet).forEach(([key, value]) => {
-      //turn object into an array of arrays and loop through them
       if (value) {
-        setDiet((prevState) => [...prevState, key]);
+        if (!diet.includes(key)) {
+          setDiet((prevState) => [...prevState, key]);
+        }
       }
     });
   };
+
+  useEffect(() => {
+    console.log(diet);
+  }, [diet]);
 
   const goStepBack = () => {
     if (!steps.second) {
@@ -50,12 +64,16 @@ const FirstStep: React.FC<FirstStepProps> = ({
     <div className={classes.container}>
       <div>
         <h4>
-          {!steps.first ? 'Step One' : steps.first ? 'Step Two' : 'Step three'}
+          {!steps.first
+            ? 'Step One'
+            : steps.first && !steps.second
+            ? 'Step Two'
+            : 'Step three'}
         </h4>
         <h1>
           {!steps.first
             ? 'Choose your main ingridient'
-            : steps.first
+            : steps.first && !steps.second
             ? 'Choose your diet'
             : 'Choose your meal'}
         </h1>
@@ -64,10 +82,16 @@ const FirstStep: React.FC<FirstStepProps> = ({
         {!steps.first && (
           <Input ingredient={ingredient} setIngredient={setIngredient} />
         )}
-        {steps.first && (
+        {!steps.second && steps.first && (
           <DietSection
             setSelectedDiet={setSelectedDiet}
             selectedDiet={selectedDiet}
+          />
+        )}
+        {steps.second && (
+          <MealSection
+            setSelectedMeal={setSelectedMeal}
+            selectedMeal={selectedMeal}
           />
         )}
       </div>
