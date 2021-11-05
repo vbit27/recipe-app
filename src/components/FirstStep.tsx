@@ -36,7 +36,14 @@ const FirstStep: React.FC<FirstStepProps> = ({
         setDiet((prevState) => [...prevState, key]);
       }
     });
-    console.log(diet);
+  };
+
+  const goStepBack = () => {
+    if (!steps.second) {
+      setSteps((prevState) => ({ ...prevState, first: false }));
+    } else if (steps.second) {
+      setSteps((prevState) => ({ ...prevState, second: false }));
+    }
   };
 
   return (
@@ -65,6 +72,9 @@ const FirstStep: React.FC<FirstStepProps> = ({
         )}
       </div>
       <div>
+        <Button buttonStyle={'btn--outline'} onClick={goStepBack}>
+          Back
+        </Button>
         <Button
           buttonStyle={'btn--outline'}
           onClick={!steps.first ? goStepTwo : goStepThree}

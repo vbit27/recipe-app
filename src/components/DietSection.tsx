@@ -15,16 +15,32 @@ const DietSection: React.FC<DietSectionProps> = ({
 
   return (
     <div className={classes.container}>
-      <IconBtn img={'icons'} onClick={() => toggleDiet('vegan')}>
+      <IconBtn
+        img={'icons'}
+        onClick={() => toggleDiet('vegan')}
+        active={selectedDiet.vegan}
+      >
         Vegan
       </IconBtn>
-      <IconBtn img={'icons'} onClick={() => toggleDiet('vegetarian')}>
+      <IconBtn
+        img={'icons'}
+        onClick={() => toggleDiet('vegetarian')}
+        active={selectedDiet.vegetarian}
+      >
         Vegetarian
       </IconBtn>
-      <IconBtn img={'icons'} onClick={() => toggleDiet('gluten')}>
+      <IconBtn
+        img={'icons'}
+        onClick={() => toggleDiet('gluten')}
+        active={selectedDiet.gluten}
+      >
         Gluten-Free
       </IconBtn>
-      <IconBtn img={'icons'} onClick={() => toggleDiet('ketogenic')}>
+      <IconBtn
+        img={'icons'}
+        onClick={() => toggleDiet('ketogenic')}
+        active={selectedDiet.ketogenic}
+      >
         Ketogenic
       </IconBtn>
     </div>
