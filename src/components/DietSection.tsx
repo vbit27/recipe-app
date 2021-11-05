@@ -5,12 +5,23 @@ import IconBtn from '../shared/IconBtn';
 const DietSection: React.FC<DietSectionProps> = ({
   setSelectedDiet,
   selectedDiet,
+  setDiet,
+  diet,
 }) => {
-  const toggleDiet = (param: D) => {
+  const toggleDiete = (param: D) => {
     setSelectedDiet((prevState) => ({
       ...prevState,
       [param]: !selectedDiet[param],
     }));
+  };
+
+  const toggleDiet = (param: D) => {
+    if (!diet.includes(param)) {
+      setDiet((prevState) => [...prevState, param]);
+    } else {
+      const newDietArr = diet.filter((value) => value !== param);
+      setDiet(newDietArr);
+    }
   };
 
   return (
@@ -18,28 +29,28 @@ const DietSection: React.FC<DietSectionProps> = ({
       <IconBtn
         img={'icons'}
         onClick={() => toggleDiet('vegan')}
-        active={selectedDiet.vegan}
+        active={diet.includes('vegan')}
       >
         Vegan
       </IconBtn>
       <IconBtn
         img={'icons'}
         onClick={() => toggleDiet('vegetarian')}
-        active={selectedDiet.vegetarian}
+        active={diet.includes('vegetarian')}
       >
         Vegetarian
       </IconBtn>
       <IconBtn
         img={'icons'}
         onClick={() => toggleDiet('gluten')}
-        active={selectedDiet.gluten}
+        active={diet.includes('gluten')}
       >
         Gluten-Free
       </IconBtn>
       <IconBtn
         img={'icons'}
         onClick={() => toggleDiet('ketogenic')}
-        active={selectedDiet.ketogenic}
+        active={diet.includes('ketogenic')}
       >
         Ketogenic
       </IconBtn>
@@ -62,6 +73,8 @@ interface DietSectionProps {
     gluten: boolean;
     ketogenic: boolean;
   };
+  setDiet: React.Dispatch<React.SetStateAction<string[]>>;
+  diet: string[];
 }
 
 type diet = {

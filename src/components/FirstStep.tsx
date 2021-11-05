@@ -86,6 +86,8 @@ const FirstStep: React.FC<FirstStepProps> = ({
           <DietSection
             setSelectedDiet={setSelectedDiet}
             selectedDiet={selectedDiet}
+            setDiet={setDiet}
+            diet={diet}
           />
         )}
         {steps.second && (
