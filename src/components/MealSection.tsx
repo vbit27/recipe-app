@@ -7,8 +7,8 @@ const MealSection: React.FC<MealSectionProps> = ({ setMeal, meal }) => {
     if (!meal.includes(param)) {
       setMeal((prevState) => [...prevState, param]);
     } else {
-      const newDietArr = meal.filter((value) => value !== param);
-      setMeal(newDietArr);
+      const newMealArr = meal.filter((value) => value !== param);
+      setMeal(newMealArr);
     }
   };
 

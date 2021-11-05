@@ -1,5 +1,5 @@
 import classes from './FirstStep.module.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Button from '../shared/Button';
 import Input from './Input';
 import DietSection from './DietSection';
@@ -13,60 +13,58 @@ const FirstStep: React.FC<FirstStepProps> = ({
   setMeal,
   meal,
 }) => {
-  const [steps, setSteps] = useState({
+  const [step, setStep] = useState({
     first: false,
     second: false,
     third: false,
   });
 
-  const goStepTwo = () => {
-    if (ingredient) {
-      setSteps((prevState) => ({ ...prevState, first: true }));
+  const goNextStep = () => {
+    if (!step.first) {
+      if (ingredient) {
+        setStep((prevState) => ({ ...prevState, first: true }));
+      }
+    } else if (!step.second) {
+      setStep((prevState) => ({ ...prevState, second: true }));
     }
   };
-
-  const goStepThree = () => {
-    setSteps((prevState) => ({ ...prevState, second: true }));
-  };
-
-  useEffect(() => {
-    console.log(diet);
-  }, [diet]);
 
   const goStepBack = () => {
-    if (!steps.second) {
-      setSteps((prevState) => ({ ...prevState, first: false }));
-    } else if (steps.second) {
-      setSteps((prevState) => ({ ...prevState, second: false }));
+    if (!step.second) {
+      setStep((prevState) => ({ ...prevState, first: false }));
+    } else if (step.second) {
+      setStep((prevState) => ({ ...prevState, second: false }));
     }
   };
+
+  const startSearch = () => {};
 
   return (
     <div className={classes.container}>
       <div>
         <h4>
-          {!steps.first
+          {!step.first
             ? 'Step One'
-            : steps.first && !steps.second
+            : step.first && !step.second
             ? 'Step Two'
             : 'Step three'}
         </h4>
         <h1>
-          {!steps.first
+          {!step.first
             ? 'Choose your main ingridient'
-            : steps.first && !steps.second
+            : step.first && !step.second
             ? 'Choose your diet'
             : 'Choose your meal'}
         </h1>
       </div>
       <div>
-        {!steps.first && (
+        {!step.first && (
           <Input ingredient={ingredient} setIngredient={setIngredient} />
         )}
-        {!steps.second && steps.first && (
+        {!step.second && step.first && (
           <DietSection setDiet={setDiet} diet={diet} />
         )}
-        {steps.second && <MealSection setMeal={setMeal} meal={meal} />}
+        {step.second && <MealSection setMeal={setMeal} meal={meal} />}
       </div>
       <div>
         <Button buttonStyle={'btn--outline'} onClick={goStepBack}>
@@ -74,9 +72,9 @@ const FirstStep: React.FC<FirstStepProps> = ({
         </Button>
         <Button
           buttonStyle={'btn--outline'}
-          onClick={!steps.first ? goStepTwo : goStepThree}
+          onClick={step.second ? startSearch : goNextStep}
         >
-          {'Next >'}
+          {step.second ? 'Search >' : 'Next >'}
         </Button>
       </div>
     </div>
