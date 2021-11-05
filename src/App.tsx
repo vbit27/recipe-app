@@ -7,6 +7,7 @@ import Header from './components/Header';
 function App() {
   const [ingredient, setIngredient] = useState<null | string>(null);
   const [diet, setDiet] = useState<string[]>([]);
+  const [meal, setMeal] = useState<string[]>([]);
 
   return (
     <div className="App">
@@ -16,6 +17,8 @@ function App() {
         ingredient={ingredient}
         setDiet={setDiet}
         diet={diet}
+        setMeal={setMeal}
+        meal={meal}
       />
     </div>
   );

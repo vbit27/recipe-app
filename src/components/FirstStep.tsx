@@ -10,23 +10,13 @@ const FirstStep: React.FC<FirstStepProps> = ({
   ingredient,
   setDiet,
   diet,
+  setMeal,
+  meal,
 }) => {
   const [steps, setSteps] = useState({
     first: false,
     second: false,
     third: false,
-  });
-  const [selectedDiet, setSelectedDiet] = useState({
-    vegan: false,
-    vegetarian: false,
-    gluten: false,
-    ketogenic: false,
-  });
-  const [selectedMeal, setSelectedMeal] = useState({
-    breakfast: false,
-    lunch: false,
-    dinner: false,
-    snack: false,
   });
 
   const goStepTwo = () => {
@@ -37,15 +27,6 @@ const FirstStep: React.FC<FirstStepProps> = ({
 
   const goStepThree = () => {
     setSteps((prevState) => ({ ...prevState, second: true }));
-
-    //turn object into an array of arrays and loop through them
-    Object.entries(selectedDiet).forEach(([key, value]) => {
-      if (value) {
-        if (!diet.includes(key)) {
-          setDiet((prevState) => [...prevState, key]);
-        }
-      }
-    });
   };
 
   useEffect(() => {
@@ -83,19 +64,9 @@ const FirstStep: React.FC<FirstStepProps> = ({
           <Input ingredient={ingredient} setIngredient={setIngredient} />
         )}
         {!steps.second && steps.first && (
-          <DietSection
-            setSelectedDiet={setSelectedDiet}
-            selectedDiet={selectedDiet}
-            setDiet={setDiet}
-            diet={diet}
-          />
+          <DietSection setDiet={setDiet} diet={diet} />
         )}
-        {steps.second && (
-          <MealSection
-            setSelectedMeal={setSelectedMeal}
-            selectedMeal={selectedMeal}
-          />
-        )}
+        {steps.second && <MealSection setMeal={setMeal} meal={meal} />}
       </div>
       <div>
         <Button buttonStyle={'btn--outline'} onClick={goStepBack}>
@@ -117,6 +88,8 @@ interface FirstStepProps {
   ingredient: string | null;
   setDiet: React.Dispatch<React.SetStateAction<string[]>>;
   diet: string[];
+  setMeal: React.Dispatch<React.SetStateAction<string[]>>;
+  meal: string[];
 }
 
 export default FirstStep;

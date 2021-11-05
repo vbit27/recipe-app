@@ -1,45 +1,48 @@
 import classes from './MealSection.module.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import IconBtn from '../shared/IconBtn';
 
-const MealSection: React.FC<MealSectionProps> = ({
-  setSelectedMeal,
-  selectedMeal,
-}) => {
-  const toggleMeal = (param: D) => {
-    setSelectedMeal((prevState) => ({
-      ...prevState,
-      [param]: !selectedMeal[param],
-    }));
+const MealSection: React.FC<MealSectionProps> = ({ setMeal, meal }) => {
+  const toggleMeal = (param: meals) => {
+    if (!meal.includes(param)) {
+      setMeal((prevState) => [...prevState, param]);
+    } else {
+      const newDietArr = meal.filter((value) => value !== param);
+      setMeal(newDietArr);
+    }
   };
+
+  useEffect(() => {
+    console.log(meal);
+  }, [meal]);
 
   return (
     <div className={classes.container}>
       <IconBtn
         img={'icons'}
         onClick={() => toggleMeal('breakfast')}
-        active={selectedMeal.breakfast}
+        active={meal.includes('breakfast')}
       >
         Breakfast
       </IconBtn>
       <IconBtn
         img={'icons'}
         onClick={() => toggleMeal('lunch')}
-        active={selectedMeal.lunch}
+        active={meal.includes('lunch')}
       >
         Lunch
       </IconBtn>
       <IconBtn
         img={'icons'}
         onClick={() => toggleMeal('dinner')}
-        active={selectedMeal.dinner}
+        active={meal.includes('dinner')}
       >
         Dinner
       </IconBtn>
       <IconBtn
         img={'icons'}
         onClick={() => toggleMeal('snack')}
-        active={selectedMeal.snack}
+        active={meal.includes('snack')}
       >
         Snack
       </IconBtn>
@@ -48,20 +51,8 @@ const MealSection: React.FC<MealSectionProps> = ({
 };
 
 interface MealSectionProps {
-  setSelectedMeal: React.Dispatch<
-    React.SetStateAction<{
-      breakfast: boolean;
-      lunch: boolean;
-      dinner: boolean;
-      snack: boolean;
-    }>
-  >;
-  selectedMeal: {
-    breakfast: boolean;
-    lunch: boolean;
-    dinner: boolean;
-    snack: boolean;
-  };
+  setMeal: React.Dispatch<React.SetStateAction<string[]>>;
+  meal: string[];
 }
 
 type meal = {
@@ -70,6 +61,6 @@ type meal = {
   dinner: boolean;
   snack: boolean;
 };
-type D = keyof meal;
+type meals = keyof meal;
 
 export default MealSection;
