@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import IconBtn from '../shared/IconBtn';
 
 const DietSection: React.FC<DietSectionProps> = ({ setDiet, diet }) => {
-  const toggleDiet = (param: D) => {
+  const toggleDiet = (param: diet) => {
     if (!diet.includes(param)) {
       setDiet((prevState) => [...prevState, param]);
     } else {
@@ -51,12 +51,6 @@ interface DietSectionProps {
   diet: string[];
 }
 
-type diet = {
-  vegan: boolean;
-  vegetarian: boolean;
-  gluten: boolean;
-  ketogenic: boolean;
-};
-type D = keyof diet;
+type diet = 'vegan' | 'vegetarian' | 'gluten' | 'ketogenic';
 
 export default DietSection;

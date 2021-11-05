@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import IconBtn from '../shared/IconBtn';
 
 const MealSection: React.FC<MealSectionProps> = ({ setMeal, meal }) => {
-  const toggleMeal = (param: meals) => {
+  const toggleMeal = (param: meal) => {
     if (!meal.includes(param)) {
       setMeal((prevState) => [...prevState, param]);
     } else {
@@ -11,10 +11,6 @@ const MealSection: React.FC<MealSectionProps> = ({ setMeal, meal }) => {
       setMeal(newDietArr);
     }
   };
-
-  useEffect(() => {
-    console.log(meal);
-  }, [meal]);
 
   return (
     <div className={classes.container}>
@@ -55,12 +51,6 @@ interface MealSectionProps {
   meal: string[];
 }
 
-type meal = {
-  breakfast: boolean;
-  lunch: boolean;
-  dinner: boolean;
-  snack: boolean;
-};
-type meals = keyof meal;
+type meal = 'breakfast' | 'lunch' | 'dinner' | 'snack';
 
 export default MealSection;
