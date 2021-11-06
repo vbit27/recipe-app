@@ -1,10 +1,14 @@
-import classes from './Input.module.css';
+import classes from './IngredientSection.module.css';
 import React, { useState } from 'react';
+import Input from '../shared/Input';
 
-const Input: React.FC<InputProps> = ({ ingredient, setIngredient }) => {
+const IngredientSection: React.FC<IngredientSectionProps> = ({
+  ingredient,
+  setIngredient,
+}) => {
   const [input, setInput] = useState('');
 
-  const addIngridient = () => {
+  const addIngredient = () => {
     if (input) {
       setIngredient(input);
       setInput('');
@@ -14,17 +18,13 @@ const Input: React.FC<InputProps> = ({ ingredient, setIngredient }) => {
   return (
     <>
       {!ingredient ? (
-        <form onSubmit={(e) => e.preventDefault()}>
-          <input
-            type="text"
-            placeholder="eg. eggplant"
-            onChange={(e) => setInput(e.target.value)}
-            value={input}
-          />
-          <button className={classes.inputBtn} onClick={addIngridient}>
-            +
-          </button>
-        </form>
+        <Input
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            setInput(event.target.value)
+          }
+          input={input}
+          onClick={addIngredient}
+        />
       ) : (
         <div>
           <h6>Your main ingredient is:</h6>
@@ -41,9 +41,9 @@ const Input: React.FC<InputProps> = ({ ingredient, setIngredient }) => {
   );
 };
 
-interface InputProps {
+interface IngredientSectionProps {
   ingredient: string | null;
   setIngredient: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-export default Input;
+export default IngredientSection;

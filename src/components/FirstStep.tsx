@@ -1,7 +1,7 @@
 import classes from './FirstStep.module.css';
 import React, { useState } from 'react';
 import Button from '../shared/Button';
-import Input from './Input';
+import IngredientSection from './IngredientSection';
 import DietSection from './DietSection';
 import MealSection from './MealSection';
 
@@ -59,7 +59,10 @@ const FirstStep: React.FC<FirstStepProps> = ({
       </div>
       <div>
         {!step.first && (
-          <Input ingredient={ingredient} setIngredient={setIngredient} />
+          <IngredientSection
+            ingredient={ingredient}
+            setIngredient={setIngredient}
+          />
         )}
         {!step.second && step.first && (
           <DietSection setDiet={setDiet} diet={diet} />
