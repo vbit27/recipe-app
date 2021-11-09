@@ -1,24 +1,20 @@
-import classes from './FirstStep.module.css';
+import classes from './SearchSection.module.css';
 import React, { useState } from 'react';
 import Button from '../shared/Button';
-import IngredientSection from './IngredientSection';
-import DietSection from './DietSection';
-import MealSection from './MealSection';
+import IngredientFilter from './IngredientFilter';
+import DietSection from './DietFilter';
+import MealFilter from './MealFilter';
 
-const FirstStep: React.FC<FirstStepProps> = ({
+const SearchSection: React.FC<SearchSectionProps> = ({
   setIngredient,
   ingredient,
   setDiet,
   diet,
   setMeal,
   meal,
+  setStep,
+  step,
 }) => {
-  const [step, setStep] = useState({
-    first: false,
-    second: false,
-    third: false,
-  });
-
   const goNextStep = () => {
     if (!step.first) {
       if (ingredient) {
@@ -37,7 +33,9 @@ const FirstStep: React.FC<FirstStepProps> = ({
     }
   };
 
-  const startSearch = () => {};
+  const startSearch = () => {
+    setStep((prevState) => ({ ...prevState, third: true }));
+  };
 
   return (
     <div className={classes.container}>
@@ -59,7 +57,7 @@ const FirstStep: React.FC<FirstStepProps> = ({
       </div>
       <div>
         {!step.first && (
-          <IngredientSection
+          <IngredientFilter
             ingredient={ingredient}
             setIngredient={setIngredient}
           />
@@ -67,7 +65,7 @@ const FirstStep: React.FC<FirstStepProps> = ({
         {!step.second && step.first && (
           <DietSection setDiet={setDiet} diet={diet} />
         )}
-        {step.second && <MealSection setMeal={setMeal} meal={meal} />}
+        {step.second && <MealFilter setMeal={setMeal} meal={meal} />}
       </div>
       <div>
         <Button buttonStyle={'btn--outline'} onClick={goStepBack}>
@@ -84,13 +82,25 @@ const FirstStep: React.FC<FirstStepProps> = ({
   );
 };
 
-interface FirstStepProps {
+interface SearchSectionProps {
   setIngredient: React.Dispatch<React.SetStateAction<string | null>>;
   ingredient: string | null;
   setDiet: React.Dispatch<React.SetStateAction<string[]>>;
   diet: string[];
   setMeal: React.Dispatch<React.SetStateAction<string[]>>;
   meal: string[];
+  setStep: React.Dispatch<
+    React.SetStateAction<{
+      first: boolean;
+      second: boolean;
+      third: boolean;
+    }>
+  >;
+  step: {
+    first: boolean;
+    second: boolean;
+    third: boolean;
+  };
 }
 
-export default FirstStep;
+export default SearchSection;

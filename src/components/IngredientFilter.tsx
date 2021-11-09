@@ -1,8 +1,8 @@
-import classes from './IngredientSection.module.css';
+import classes from './IngredientFilter.module.css';
 import React, { useState } from 'react';
 import Input from '../shared/Input';
 
-const IngredientSection: React.FC<IngredientSectionProps> = ({
+const IngredientFilter: React.FC<IngredientFilterProps> = ({
   ingredient,
   setIngredient,
 }) => {
@@ -41,9 +41,9 @@ const IngredientSection: React.FC<IngredientSectionProps> = ({
   );
 };
 
-interface IngredientSectionProps {
+interface IngredientFilterProps {
   ingredient: string | null;
   setIngredient: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-export default IngredientSection;
+export default IngredientFilter;

@@ -7,13 +7,18 @@ const IconBtn: React.FC<IconBtnProps> = ({
   img,
   onClick,
   active,
+  filterStyle,
 }) => {
   return (
     <div
-      className={clsx(classes.container, active && classes.active)}
+      className={clsx(
+        classes.container,
+        active && classes.active,
+        filterStyle && classes.filter
+      )}
       onClick={onClick}
     >
-      <img src={`./icons/${img}.svg`} alt="icon" />
+      {!filterStyle && <img src={`./icons/${img}.svg`} alt="icon" />}
       <h3>{children}</h3>
     </div>
   );
@@ -23,6 +28,7 @@ interface IconBtnProps {
   img: string;
   onClick: () => void;
   active: boolean;
+  filterStyle?: boolean;
 }
 
 export default IconBtn;

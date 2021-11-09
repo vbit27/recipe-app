@@ -1,8 +1,12 @@
-import classes from './DietSection.module.css';
+import classes from './DietFilter.module.css';
 import React, { useState } from 'react';
 import IconBtn from '../shared/IconBtn';
 
-const DietSection: React.FC<DietSectionProps> = ({ setDiet, diet }) => {
+const DietFilter: React.FC<DietFilterProps> = ({
+  setDiet,
+  diet,
+  filterStyle,
+}) => {
   const toggleDiet = (param: diet) => {
     if (!diet.includes(param)) {
       setDiet((prevState) => [...prevState, param]);
@@ -18,6 +22,7 @@ const DietSection: React.FC<DietSectionProps> = ({ setDiet, diet }) => {
         img={'icons'}
         onClick={() => toggleDiet('vegan')}
         active={diet.includes('vegan')}
+        filterStyle={filterStyle}
       >
         Vegan
       </IconBtn>
@@ -25,6 +30,7 @@ const DietSection: React.FC<DietSectionProps> = ({ setDiet, diet }) => {
         img={'icons'}
         onClick={() => toggleDiet('vegetarian')}
         active={diet.includes('vegetarian')}
+        filterStyle={filterStyle}
       >
         Vegetarian
       </IconBtn>
@@ -32,6 +38,7 @@ const DietSection: React.FC<DietSectionProps> = ({ setDiet, diet }) => {
         img={'icons'}
         onClick={() => toggleDiet('gluten')}
         active={diet.includes('gluten')}
+        filterStyle={filterStyle}
       >
         Gluten-Free
       </IconBtn>
@@ -39,6 +46,7 @@ const DietSection: React.FC<DietSectionProps> = ({ setDiet, diet }) => {
         img={'icons'}
         onClick={() => toggleDiet('ketogenic')}
         active={diet.includes('ketogenic')}
+        filterStyle={filterStyle}
       >
         Ketogenic
       </IconBtn>
@@ -46,11 +54,12 @@ const DietSection: React.FC<DietSectionProps> = ({ setDiet, diet }) => {
   );
 };
 
-interface DietSectionProps {
+interface DietFilterProps {
   setDiet: React.Dispatch<React.SetStateAction<string[]>>;
   diet: string[];
+  filterStyle?: boolean;
 }
 
 type diet = 'vegan' | 'vegetarian' | 'gluten' | 'ketogenic';
 
-export default DietSection;
+export default DietFilter;
