@@ -2,8 +2,7 @@ import classes from './SearchSection.module.css';
 import React, { useState } from 'react';
 import Button from '../shared/Button';
 import IngredientFilter from './IngredientFilter';
-import DietSection from './DietFilter';
-import MealFilter from './MealFilter';
+import Filter from './Filter';
 
 const SearchSection: React.FC<SearchSectionProps> = ({
   setIngredient,
@@ -63,9 +62,23 @@ const SearchSection: React.FC<SearchSectionProps> = ({
           />
         )}
         {!step.second && step.first && (
-          <DietSection setDiet={setDiet} diet={diet} />
+          <Filter
+            setDiet={setDiet}
+            diet={diet}
+            type={'diet'}
+            setMeal={setMeal}
+            meal={meal}
+          />
         )}
-        {step.second && <MealFilter setMeal={setMeal} meal={meal} />}
+        {step.second && (
+          <Filter
+            setDiet={setDiet}
+            diet={diet}
+            type={'meal'}
+            setMeal={setMeal}
+            meal={meal}
+          />
+        )}
       </div>
       <div>
         <Button buttonStyle={'btn--outline'} onClick={goStepBack}>

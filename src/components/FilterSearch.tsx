@@ -1,8 +1,8 @@
 import classes from './FilterSearch.module.css';
 import React, { useState } from 'react';
 import Input from '../shared/Input';
-import DietFilter from './DietFilter';
-import MealFilter from './MealFilter';
+import DietFilter from './Filter';
+import Filter from './Filter';
 
 const FilterSearch: React.FC<FilterSearchProps> = ({
   setIngredient,
@@ -36,8 +36,22 @@ const FilterSearch: React.FC<FilterSearchProps> = ({
       </div>
       {showFilter && (
         <div>
-          <DietFilter setDiet={setDiet} diet={diet} filterStyle={true} />
-          <MealFilter setMeal={setMeal} meal={meal} filterStyle={true} />
+          <Filter
+            setDiet={setDiet}
+            diet={diet}
+            setMeal={setMeal}
+            meal={meal}
+            filterStyle={true}
+            type={'diet'}
+          />
+          <Filter
+            setDiet={setDiet}
+            diet={diet}
+            setMeal={setMeal}
+            meal={meal}
+            filterStyle={true}
+            type={'meal'}
+          />
         </div>
       )}
     </div>
@@ -53,4 +67,5 @@ interface FilterSearchProps {
 }
 
 type diet = 'vegan' | 'vegetarian' | 'gluten' | 'ketogenic';
+
 export default FilterSearch;
