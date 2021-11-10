@@ -18,13 +18,7 @@ const IngredientFilter: React.FC<IngredientFilterProps> = ({
   return (
     <>
       {!ingredient ? (
-        <Input
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-            setInput(event.target.value)
-          }
-          input={input}
-          onClick={addIngredient}
-        />
+        <Input onClick={addIngredient} />
       ) : (
         <div>
           <h6>Your main ingredient is:</h6>

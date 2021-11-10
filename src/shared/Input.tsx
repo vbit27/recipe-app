@@ -1,17 +1,21 @@
 import classes from './Input.module.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-const Input: React.FC<InputProps> = ({ onChange, onClick, input }) => {
+const Input: React.FC<InputProps> = ({ onClick }) => {
+  const [input, setInput] = useState('');
+
   return (
     <>
       <form onSubmit={(e) => e.preventDefault()}>
         <input
           type="text"
           placeholder="eg. eggplant"
-          onChange={onChange}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            setInput(event.target.value)
+          }
           value={input}
         />
-        <button className={classes.inputBtn} onClick={onClick}>
+        <button className={classes.inputBtn} onClick={() => onClick(input)}>
           +
         </button>
       </form>
@@ -20,9 +24,7 @@ const Input: React.FC<InputProps> = ({ onChange, onClick, input }) => {
 };
 
 interface InputProps {
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  input: string;
-  onClick: () => void;
+  onClick: (input: string) => void;
 }
 
 export default Input;

@@ -1,10 +1,11 @@
-import classes from './SearchSection.module.css';
+import classes from './StepsSection.module.css';
 import React, { useState } from 'react';
 import Button from '../shared/Button';
 import IngredientFilter from './IngredientFilter';
 import Filter from './Filter';
+import Input from '../shared/Input';
 
-const SearchSection: React.FC<SearchSectionProps> = ({
+const StepsSection: React.FC<StepsSectionProps> = ({
   setIngredient,
   ingredient,
   setDiet,
@@ -14,6 +15,12 @@ const SearchSection: React.FC<SearchSectionProps> = ({
   setStep,
   step,
 }) => {
+  const addIngredient = (input: string) => {
+    if (input) {
+      setIngredient(input);
+    }
+  };
+
   const goNextStep = () => {
     if (!step.first) {
       if (ingredient) {
@@ -55,12 +62,7 @@ const SearchSection: React.FC<SearchSectionProps> = ({
         </h1>
       </div>
       <div>
-        {!step.first && (
-          <IngredientFilter
-            ingredient={ingredient}
-            setIngredient={setIngredient}
-          />
-        )}
+        {!step.first && <Input onClick={(input) => addIngredient(input)} />}
         {!step.second && step.first && (
           <Filter
             setDiet={setDiet}
@@ -95,7 +97,7 @@ const SearchSection: React.FC<SearchSectionProps> = ({
   );
 };
 
-interface SearchSectionProps {
+interface StepsSectionProps {
   setIngredient: React.Dispatch<React.SetStateAction<string | null>>;
   ingredient: string | null;
   setDiet: React.Dispatch<React.SetStateAction<string[]>>;
@@ -116,4 +118,4 @@ interface SearchSectionProps {
   };
 }
 
-export default SearchSection;
+export default StepsSection;

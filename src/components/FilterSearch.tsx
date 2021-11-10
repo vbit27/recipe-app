@@ -25,13 +25,7 @@ const FilterSearch: React.FC<FilterSearchProps> = ({
   return (
     <div className={classes.container}>
       <div>
-        <Input
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-            setInput(event.target.value)
-          }
-          input={input}
-          onClick={addIngredient}
-        />
+        <Input onClick={addIngredient} />
         <button onClick={() => setShowFilter(!showFilter)}>Filter</button>
       </div>
       {showFilter && (
