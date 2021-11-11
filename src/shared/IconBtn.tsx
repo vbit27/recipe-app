@@ -19,7 +19,7 @@ const IconBtn: React.FC<IconBtnProps> = ({
       onClick={onClick}
     >
       {!filterStyle && <img src={`./icons/${img}.svg`} alt="icon" />}
-      <h3>{children}</h3>
+      <h6>{children}</h6>
     </div>
   );
 };

@@ -16,7 +16,7 @@ const Input: React.FC<InputProps> = ({ onClick }) => {
           value={input}
         />
         <button className={classes.inputBtn} onClick={() => onClick(input)}>
-          +
+          add
         </button>
       </form>
     </>

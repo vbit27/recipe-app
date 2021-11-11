@@ -14,10 +14,6 @@
   background-color: #ff6347;
 }
 
-.active {
-  background-color: #ff6347;
-}
-
 img {
   width: 40px;
 }
@@ -25,6 +21,11 @@ img {
 .filter {
   width: fit-content;
   height: fit-content;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   background-color: transparent;
+}
+
+.active {
+  background-color: #ffbbaf;
+  border: 1px solid #ff6347;
 }

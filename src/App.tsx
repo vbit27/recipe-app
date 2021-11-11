@@ -5,6 +5,7 @@ import StepsSection from './components/StepsSection';
 import Header from './components/Header';
 import Input from './shared/Input';
 import Filter from './components/Filter';
+import axios from 'axios';
 
 function App() {
   const [ingredient, setIngredient] = useState<null | string>(null);
@@ -24,6 +25,19 @@ function App() {
     }
   }, [ingredient]);
 
+  useEffect(() => {
+    console.log(meal);
+  }, [meal]);
+
+  useEffect(() => {
+    console.log(diet);
+  }, [diet]);
+
+  const getData = (input: string) => {
+    setIngredient(input);
+    getRecipe(input, meal, diet);
+  };
+
   return (
     <div className="App">
       <Header />
@@ -41,7 +55,7 @@ function App() {
         />
       ) : null}
 
-      <Input onClick={(input) => setIngredient(input)} />
+      <Input onClick={(input) => getData(input)} />
       <Filter
         setDiet={setDiet}
         diet={diet}
