@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { getRecipe } from './api/RecipeAPI';
+import { getRecipe } from './api/edamamAPI';
 import './App.css';
 import StepsSection from './components/StepsSection';
 import Header from './components/Header';
 import Input from './shared/Input';
 import Filter from './components/Filter';
-import axios from 'axios';
 
 function App() {
   const [ingredient, setIngredient] = useState<null | string>(null);
@@ -55,23 +54,26 @@ function App() {
         />
       ) : null}
 
-      <Input onClick={(input) => getData(input)} />
-      <Filter
-        setDiet={setDiet}
-        diet={diet}
-        setMeal={setMeal}
-        meal={meal}
-        filterStyle={true}
-        type={'diet'}
-      />
-      <Filter
-        setDiet={setDiet}
-        diet={diet}
-        setMeal={setMeal}
-        meal={meal}
-        filterStyle={true}
-        type={'meal'}
-      />
+      <div className={'search-container'}>
+        <Input onClick={(input) => getData(input)} />
+        <Filter
+          setDiet={setDiet}
+          diet={diet}
+          setMeal={setMeal}
+          meal={meal}
+          filterStyle={true}
+          type={'diet'}
+        />
+        <Filter
+          setDiet={setDiet}
+          diet={diet}
+          setMeal={setMeal}
+          meal={meal}
+          filterStyle={true}
+          type={'meal'}
+        />
+      </div>
+      <h2>Recipes with {ingredient}</h2>
     </div>
   );
 }

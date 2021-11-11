@@ -1,8 +1,0 @@
-.container {
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  gap: 6rem;
-  align-items: center;
-  background-color: turquoise;
-}

@@ -62,11 +62,13 @@ const Filter: React.FC<FilterProps> = ({
         img={'icons'}
         onClick={
           type === 'diet'
-            ? () => setFilter('gluten')
+            ? () => setFilter('gluten-free')
             : () => setFilter('dinner')
         }
         active={
-          type === 'diet' ? diet.includes('gluten') : meal.includes('dinner')
+          type === 'diet'
+            ? diet.includes('gluten-free')
+            : meal.includes('dinner')
         }
         filterStyle={filterStyle}
       >
@@ -76,11 +78,13 @@ const Filter: React.FC<FilterProps> = ({
         img={'icons'}
         onClick={
           type === 'diet'
-            ? () => setFilter('ketogenic')
+            ? () => setFilter('keto-friendly')
             : () => setFilter('snack')
         }
         active={
-          type === 'diet' ? diet.includes('ketogenic') : meal.includes('snack')
+          type === 'diet'
+            ? diet.includes('keto-friendly')
+            : meal.includes('snack')
         }
         filterStyle={filterStyle}
       >
@@ -99,7 +103,7 @@ interface FilterProps {
   type: string;
 }
 
-type diet = 'vegan' | 'vegetarian' | 'gluten' | 'ketogenic';
+type diet = 'vegan' | 'vegetarian' | 'gluten-free' | 'keto-friendly';
 type meal = 'breakfast' | 'lunch' | 'dinner' | 'snack';
 
 export default Filter;
