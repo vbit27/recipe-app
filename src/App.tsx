@@ -5,6 +5,8 @@ import StepsSection from './components/StepsSection';
 import Header from './components/Header';
 import Input from './shared/Input';
 import Filter from './components/Filter';
+import { data } from './api/data';
+import RecipeCard from './components/RecipeCard';
 
 function App() {
   const [ingredient, setIngredient] = useState<null | string>(null);
@@ -74,6 +76,11 @@ function App() {
         />
       </div>
       <h2>Recipes with {ingredient}</h2>
+      <div className={'recipes-container'}>
+        {data.hits.map((recipe) => (
+          <RecipeCard data={recipe.recipe} />
+        ))}
+      </div>
     </div>
   );
 }
