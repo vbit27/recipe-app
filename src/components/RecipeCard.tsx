@@ -12,6 +12,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ data }) => {
           <p> {data.ingredientLines.length} ingredients</p>
           <p>{~~data.calories} cal.</p>
         </div>
+
         <h2>{data.label}</h2>
       </div>
     </div>
