@@ -4,10 +4,16 @@ import React from 'react';
 const RecipeCard: React.FC<RecipeCardProps> = ({ data }) => {
   return (
     <div className={classes.container}>
-      <img src={data.image} alt={data.label} />
-      <h2>{data.label}</h2>
-      <p>Number of ingredients: {data.ingredientLines.length}</p>
-      <p>{data.cuisineType} recipe</p>
+      <div className={classes.imageContainer}>
+        <img src={data.image} alt={data.label} />
+      </div>
+      <div>
+        <div className={classes.subTittleContainer}>
+          <p> {data.ingredientLines.length} ingredients</p>
+          <p>{~~data.calories} cal.</p>
+        </div>
+        <h2>{data.label}</h2>
+      </div>
     </div>
   );
 };

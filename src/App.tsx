@@ -75,11 +75,13 @@ function App() {
           type={'meal'}
         />
       </div>
-      <h2>Recipes with {ingredient}</h2>
-      <div className={'recipes-container'}>
-        {data.hits.map((recipe) => (
-          <RecipeCard data={recipe.recipe} />
-        ))}
+      <div className={'recipes-seciton'}>
+        <h2>Recipes with {ingredient}</h2>
+        <div className={'recipes-container'}>
+          {data.hits.map((recipe) => (
+            <RecipeCard data={recipe.recipe} />
+          ))}
+        </div>
       </div>
     </div>
   );
