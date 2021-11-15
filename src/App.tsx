@@ -7,6 +7,7 @@ import Input from './shared/Input';
 import Filter from './components/Filter';
 import { data } from './api/data';
 import RecipeCard from './components/RecipeCard';
+import { Link } from 'react-router-dom';
 
 function App() {
   const [ingredient, setIngredient] = useState<null | string>(null);
@@ -79,7 +80,13 @@ function App() {
         <h2>Recipes with {ingredient}</h2>
         <div className={'recipes-container'}>
           {data.hits.map((recipe) => (
-            <RecipeCard data={recipe.recipe} />
+            <Link
+              to={{
+                pathname: `/recipe/${Math.floor(recipe.recipe.calories)}`,
+              }}
+            >
+              <RecipeCard data={recipe.recipe} />
+            </Link>
           ))}
         </div>
       </div>
