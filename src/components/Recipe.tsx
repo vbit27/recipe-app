@@ -1,29 +1,35 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { data } from '../api/data';
+import { getRecipe } from '../api/edamamAPI';
 
 const Recipe: React.FC = () => {
-  const [recipes, setRecipes] = useState() as any;
+  const [activeRecipe, setActiveRecipe] = useState() as any;
 
-  const { id } = useParams() as {
-    id: string;
+  const { label } = useParams() as {
+    label: string;
   };
 
   useEffect(() => {
-    setRecipes(
-      data.hits.find((p) => Math.floor(p.recipe.calories).toString() === id)
+    const json = localStorage.getItem('recipes');
+    const recipes = JSON.parse(json!).find(
+      (rec: any) => rec.recipe.label === label
     );
+    setActiveRecipe(recipes);
   }, []);
 
   useEffect(() => {
-    console.log(recipes);
-  }, [recipes]);
+    console.log(activeRecipe);
+  }, [activeRecipe]);
 
-  return (
-    <div>
-      <h1>I am</h1>
-    </div>
-  );
+  if (activeRecipe) {
+    return (
+      <div>
+        <h1>{activeRecipe.recipe.label}</h1>
+      </div>
+    );
+  } else return <p>Ups something went wrong</p>;
 };
 
 export default Recipe;

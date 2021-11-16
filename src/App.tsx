@@ -18,6 +18,7 @@ function App() {
     second: false,
     third: false,
   });
+  const [searchResult, setSearchResult] = useState<any>();
 
   //after pressing enter inside input field, go to next step
   useEffect(() => {
@@ -28,16 +29,25 @@ function App() {
   }, [ingredient]);
 
   useEffect(() => {
-    console.log(meal);
-  }, [meal]);
+    if (searchResult) {
+      const recipes = JSON.stringify(searchResult);
+      localStorage.setItem('recipes', recipes);
+    }
+  }, [searchResult]);
 
   useEffect(() => {
-    console.log(diet);
-  }, [diet]);
+    const json = localStorage.getItem('recipes');
+    if (json) {
+      const recipes = JSON.parse(json!);
+      setSearchResult(recipes);
+    }
+  }, []);
 
   const getData = (input: string) => {
     setIngredient(input);
-    getRecipe(input, meal, diet);
+    getRecipe(input, meal, diet).then((response) => {
+      setSearchResult(response);
+    });
   };
 
   return (
@@ -79,15 +89,16 @@ function App() {
       <div className={'recipes-seciton'}>
         <h2>Recipes with {ingredient}</h2>
         <div className={'recipes-container'}>
-          {data.hits.map((recipe) => (
-            <Link
-              to={{
-                pathname: `/recipe/${Math.floor(recipe.recipe.calories)}`,
-              }}
-            >
-              <RecipeCard data={recipe.recipe} />
-            </Link>
-          ))}
+          {searchResult &&
+            searchResult.map((recipes: any) => (
+              <Link
+                to={{
+                  pathname: `/recipe/${recipes.recipe.label}`,
+                }}
+              >
+                <RecipeCard data={recipes.recipe} />
+              </Link>
+            ))}
         </div>
       </div>
     </div>
