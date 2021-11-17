@@ -28,18 +28,47 @@ function App() {
     }
   }, [ingredient]);
 
+  //add to local storage
   useEffect(() => {
     if (searchResult) {
       const recipes = JSON.stringify(searchResult);
+      const diets = JSON.stringify(diet);
+      const meals = JSON.stringify(meal);
+      const ingredients = JSON.stringify(ingredient);
+      const steps = JSON.stringify(step);
       localStorage.setItem('recipes', recipes);
+      localStorage.setItem('diets', diets);
+      localStorage.setItem('meals', meals);
+      localStorage.setItem('ingredients', ingredients);
+      localStorage.setItem('steps', steps);
     }
-  }, [searchResult]);
+  }, [searchResult, diet, meal]);
 
   useEffect(() => {
-    const json = localStorage.getItem('recipes');
-    if (json) {
-      const recipes = JSON.parse(json!);
+    const jsonRecipe = localStorage.getItem('recipes');
+    const jsonMeal = localStorage.getItem('meals');
+    const jsonDiet = localStorage.getItem('diets');
+    const jsonIngredient = localStorage.getItem('ingredients');
+    const jsonStep = localStorage.getItem('steps');
+    if (jsonRecipe) {
+      const recipes = JSON.parse(jsonRecipe!);
       setSearchResult(recipes);
+    }
+    if (jsonMeal) {
+      const meals = JSON.parse(jsonMeal!);
+      setMeal(meals);
+    }
+    if (jsonDiet) {
+      const diets = JSON.parse(jsonDiet!);
+      setDiet(diets);
+    }
+    if (jsonIngredient) {
+      const ingredients = JSON.parse(jsonIngredient!);
+      setIngredient(ingredients);
+    }
+    if (jsonStep) {
+      const steps = JSON.parse(jsonStep!);
+      setStep(steps);
     }
   }, []);
 
