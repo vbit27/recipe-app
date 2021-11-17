@@ -14,6 +14,7 @@ const StepsSection: React.FC<StepsSectionProps> = ({
   meal,
   setStep,
   step,
+  search,
 }) => {
   const addIngredient = (input: string) => {
     if (input) {
@@ -41,6 +42,7 @@ const StepsSection: React.FC<StepsSectionProps> = ({
 
   const startSearch = () => {
     setStep((prevState) => ({ ...prevState, third: true }));
+    search();
   };
 
   return (
@@ -104,6 +106,7 @@ interface StepsSectionProps {
   diet: string[];
   setMeal: React.Dispatch<React.SetStateAction<string[]>>;
   meal: string[];
+  search: () => void;
   setStep: React.Dispatch<
     React.SetStateAction<{
       first: boolean;

@@ -1,8 +1,8 @@
 .container {
   height: 95vh;
+  background-color: #fbe0dc;
   display: flex;
   flex-direction: column;
   gap: 6rem;
   padding: 10rem;
-  max-width: 1000px;
 }

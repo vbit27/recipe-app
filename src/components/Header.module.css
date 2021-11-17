@@ -1,7 +1,7 @@
 .container {
   height: 5vh;
   display: flex;
-  background-color: transparent;
+  background-color: #fbe0dc;
   align-items: center;
 }
 

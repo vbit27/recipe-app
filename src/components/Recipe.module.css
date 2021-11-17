@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  padding: 3rem;
+  background-color: antiquewhite;
+}
+
+.heroSection {
+  display: flex;
+  gap: 1rem;
+}
+
+.titleSection {
+  flex: 5;
+  display: grid;
+  gap: 3rem;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.subtittleContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.imageSection {
+  flex: 2;
+  margin: auto 0;
+}
+
+.imageSection img {
+  width: 100%;
+  border-radius: 20px;
+}

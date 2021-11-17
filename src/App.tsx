@@ -36,13 +36,13 @@ function App() {
       const meals = JSON.stringify(meal);
       const ingredients = JSON.stringify(ingredient);
       const steps = JSON.stringify(step);
-      localStorage.setItem('recipes', recipes);
       localStorage.setItem('diets', diets);
       localStorage.setItem('meals', meals);
       localStorage.setItem('ingredients', ingredients);
       localStorage.setItem('steps', steps);
+      localStorage.setItem('recipes', recipes);
     }
-  }, [searchResult, diet, meal]);
+  }, [searchResult, diet, meal, step, ingredient]);
 
   useEffect(() => {
     const jsonRecipe = localStorage.getItem('recipes');
@@ -73,15 +73,29 @@ function App() {
   }, []);
 
   const getData = (input: string) => {
-    setIngredient(input);
-    getRecipe(input, meal, diet).then((response) => {
+    if (input) {
+      setIngredient(input);
+      getRecipe(input, meal, diet).then((response) => {
+        setSearchResult(response);
+      });
+    }
+  };
+
+  const searchForRecipes = () => {
+    getRecipe(ingredient!, meal, diet).then((response) => {
       setSearchResult(response);
     });
   };
 
   return (
     <div className="App">
-      <Header />
+      <Header
+        setIngredient={setIngredient}
+        setStep={setStep}
+        setDiet={setDiet}
+        setMeal={setMeal}
+        setSearchResult={setSearchResult}
+      />
 
       {!step.third ? (
         <StepsSection
@@ -93,6 +107,7 @@ function App() {
           meal={meal}
           setStep={setStep}
           step={step}
+          search={searchForRecipes}
         />
       ) : null}
 

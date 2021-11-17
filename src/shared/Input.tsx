@@ -1,5 +1,5 @@
 import classes from './Input.module.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 const Input: React.FC<InputProps> = ({ onClick }) => {
   const [input, setInput] = useState('');

@@ -13,7 +13,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ data }) => {
           <p>{~~data.calories} cal.</p>
         </div>
 
-        <h2>{data.label}</h2>
+        <h4>{data.label}</h4>
       </div>
     </div>
   );
