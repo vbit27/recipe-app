@@ -1,17 +1,18 @@
 .btn {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 500;
   box-shadow: none;
   border: none;
   cursor: pointer;
+  width: fit-content;
+  height: fit-content;
 }
 
 .btn--main {
   background-color: black;
   color: white;
-  border-radius: 25px;
+  border-radius: 15px;
   padding: 0.5em 2em 0.5em 2em;
-  margin: 1rem;
 }
 
 .btn--main:hover {
