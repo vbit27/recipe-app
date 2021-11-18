@@ -8,6 +8,8 @@ import Filter from './components/Filter';
 import { data } from './api/data';
 import RecipeCard from './components/RecipeCard';
 import { Link } from 'react-router-dom';
+import Button from './shared/Button';
+import clsx from 'clsx';
 
 function App() {
   const [ingredient, setIngredient] = useState<null | string>(null);
@@ -19,6 +21,7 @@ function App() {
     third: false,
   });
   const [searchResult, setSearchResult] = useState<any>();
+  const [showFilter, setShowFilter] = useState(false);
 
   //after pressing enter inside input field, go to next step
   useEffect(() => {
@@ -87,6 +90,11 @@ function App() {
     });
   };
 
+  const toggleFilter = () => {
+    setShowFilter(!showFilter);
+    console.log(showFilter);
+  };
+
   return (
     <div className="App">
       <Header
@@ -110,31 +118,37 @@ function App() {
           search={searchForRecipes}
         />
       ) : null}
-    </div>
-  );
-}
-
-export default App;
-
-/*
-<div className={'search-container'}>
-        <Input onClick={(input) => getData(input)} />
-        <Filter
-          setDiet={setDiet}
-          diet={diet}
-          setMeal={setMeal}
-          meal={meal}
-          filterStyle={true}
-          type={'diet'}
-        />
-        <Filter
-          setDiet={setDiet}
-          diet={diet}
-          setMeal={setMeal}
-          meal={meal}
-          filterStyle={true}
-          type={'meal'}
-        />
+      <div className={'search-container'}>
+        <div className={'input-container'}>
+          <Input onClick={(input) => getData(input)} />
+          <Button onClick={toggleFilter} buttonStyle={'btn--outline'}>
+            Filters
+          </Button>
+        </div>
+        <div className={clsx('filter-container', !showFilter && 'hide')}>
+          <div>
+            <p>Diet:</p>
+            <Filter
+              setDiet={setDiet}
+              diet={diet}
+              setMeal={setMeal}
+              meal={meal}
+              filterStyle={true}
+              type={'diet'}
+            />
+          </div>
+          <div>
+            <p>Meal:</p>
+            <Filter
+              setDiet={setDiet}
+              diet={diet}
+              setMeal={setMeal}
+              meal={meal}
+              filterStyle={true}
+              type={'meal'}
+            />
+          </div>
+        </div>
       </div>
       <div className={'recipes-seciton'}>
         <h4>
@@ -153,5 +167,13 @@ export default App;
             ))}
         </div>
       </div>
+    </div>
+  );
+}
+
+export default App;
+
+/*
+
 
       */

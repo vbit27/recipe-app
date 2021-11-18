@@ -10,10 +10,11 @@
   gap: 1rem;
   cursor: pointer;
   font-weight: bold;
+  transition: all 0.3s ease;
 }
 
 .container:hover {
-  background-color: #ff6347;
+  background-color: #ffb1a3;
 }
 
 img {
@@ -28,6 +29,10 @@ img {
 }
 
 .active {
+  background-color: #ff6347;
+}
+
+.active:hover {
   background-color: #ff6347;
 }
 
