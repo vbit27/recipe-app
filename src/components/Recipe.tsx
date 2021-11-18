@@ -18,6 +18,8 @@ const Recipe: React.FC = () => {
     setActiveRecipe(recipes);
   }, []);
 
+  const goToInstructions = () => {};
+
   if (activeRecipe) {
     return (
       <div className={classes.container}>
@@ -63,12 +65,12 @@ const Recipe: React.FC = () => {
               <h5>Preperations</h5>
             </strong>
             <p>
-              This recipe is provided by Self. You can view the detailed
-              preparation instructions by clicking the following link.
+              {`This recipe is provided by ${activeRecipe.recipe.source}. 
+              You can view the detailed preparation instructions by clicking the following link.`}
             </p>
-            <strong>
-              <p>Read Instructions</p>
-            </strong>
+            <a rel="noreferrer" href={activeRecipe.recipe.url} target="_blank">
+              <Button buttonStyle={'btn--main'}>Instructions</Button>
+            </a>
           </div>
         </div>
       </div>

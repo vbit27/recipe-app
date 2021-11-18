@@ -10,8 +10,8 @@ export const getRecipe = async (
   }&app_key=${process.env.REACT_APP_API_KEY}${addDietType(diets)}${addMealType(
     meals
   )}
-  &random=true&field=uri&field=label&field=image&field=source&field=url&field=healthLabels
-  &field=ingredientLines&field=calories&field=totalTime&field=cuisineType&field=mealType`;
+  &random=true&imageSize=LARGE&field=uri&field=label&field=image&field=source&field=url&field=healthLabels
+  &field=ingredientLines&field=calories&field=totalTime&field=cuisineType&field=mealType&field=source`;
 
   try {
     const data = await axios.get(url);

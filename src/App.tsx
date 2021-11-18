@@ -154,6 +154,7 @@ function App() {
         <h4>
           Recipes with <strong> {ingredient}</strong>
         </h4>
+
         <div className={'recipes-container'}>
           {searchResult &&
             searchResult.map((recipes: any) => (
