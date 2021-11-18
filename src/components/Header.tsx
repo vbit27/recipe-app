@@ -19,7 +19,9 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <>
       <div className={classes.container} onClick={resetSettings}>
-        <h4>Recipe</h4>
+        <strong>
+          <p>RECIPE</p>
+        </strong>
       </div>
     </>
   );

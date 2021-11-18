@@ -110,8 +110,14 @@ function App() {
           search={searchForRecipes}
         />
       ) : null}
+    </div>
+  );
+}
 
-      <div className={'search-container'}>
+export default App;
+
+/*
+<div className={'search-container'}>
         <Input onClick={(input) => getData(input)} />
         <Filter
           setDiet={setDiet}
@@ -131,7 +137,9 @@ function App() {
         />
       </div>
       <div className={'recipes-seciton'}>
-        <h2>Recipes with {ingredient}</h2>
+        <h4>
+          Recipes with <strong> {ingredient}</strong>
+        </h4>
         <div className={'recipes-container'}>
           {searchResult &&
             searchResult.map((recipes: any) => (
@@ -145,8 +153,5 @@ function App() {
             ))}
         </div>
       </div>
-    </div>
-  );
-}
 
-export default App;
+      */

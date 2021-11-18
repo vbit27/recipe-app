@@ -1,14 +1,10 @@
-body {
-  background-color: #ffffff;
-}
-
 .search-container {
   height: fit-content;
   display: flex;
   flex-direction: column;
   gap: 6rem;
   align-items: center;
-  background-color: turquoise;
+  background-color: #fbe0dc;
 }
 
 .recipes-seciton {

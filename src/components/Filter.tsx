@@ -31,7 +31,7 @@ const Filter: React.FC<FilterProps> = ({
   return (
     <div className={classes.container}>
       <IconBtn
-        img={'icons'}
+        img={type === 'diet' ? 'vegan' : 'breakfast'}
         onClick={
           type === 'diet'
             ? () => setFilter('vegan')
@@ -45,7 +45,7 @@ const Filter: React.FC<FilterProps> = ({
         {type === 'diet' ? 'Vegan' : 'Breakfast'}
       </IconBtn>
       <IconBtn
-        img={'icons'}
+        img={type === 'diet' ? 'vegetarian' : 'lunch'}
         onClick={
           type === 'diet'
             ? () => setFilter('vegetarian')
@@ -59,7 +59,7 @@ const Filter: React.FC<FilterProps> = ({
         {type === 'diet' ? 'Vegetarian' : 'Lunch'}
       </IconBtn>
       <IconBtn
-        img={'icons'}
+        img={type === 'diet' ? 'gluten-free' : 'dinner'}
         onClick={
           type === 'diet'
             ? () => setFilter('gluten-free')
@@ -75,7 +75,7 @@ const Filter: React.FC<FilterProps> = ({
         {type === 'diet' ? 'Gluten-Free' : 'Dinner'}
       </IconBtn>
       <IconBtn
-        img={'icons'}
+        img={type === 'diet' ? 'keto-friendly' : 'snack'}
         onClick={
           type === 'diet'
             ? () => setFilter('keto-friendly')

@@ -46,54 +46,60 @@ const StepsSection: React.FC<StepsSectionProps> = ({
   };
 
   return (
-    <div className={classes.container}>
-      <div>
-        <h4>
-          {!step.first
-            ? 'Step One'
-            : step.first && !step.second
-            ? 'Step Two'
-            : 'Step three'}
-        </h4>
-        <h1>
-          {!step.first
-            ? 'Choose your main ingridient'
-            : step.first && !step.second
-            ? 'Choose your diet'
-            : 'Choose your meal'}
-        </h1>
-      </div>
-      <div>
-        {!step.first && <Input onClick={(input) => addIngredient(input)} />}
-        {!step.second && step.first && (
-          <Filter
-            setDiet={setDiet}
-            diet={diet}
-            type={'diet'}
-            setMeal={setMeal}
-            meal={meal}
-          />
-        )}
-        {step.second && (
-          <Filter
-            setDiet={setDiet}
-            diet={diet}
-            type={'meal'}
-            setMeal={setMeal}
-            meal={meal}
-          />
-        )}
-      </div>
-      <div>
-        <Button buttonStyle={'btn--outline'} onClick={goStepBack}>
-          Back
-        </Button>
-        <Button
-          buttonStyle={'btn--outline'}
-          onClick={step.second ? startSearch : goNextStep}
-        >
-          {step.second ? 'Search >' : 'Next >'}
-        </Button>
+    <div className={classes.stepsContainer}>
+      <div className={classes.container}>
+        <div>
+          <strong>
+            <p>
+              {!step.first
+                ? 'STEP ONE'
+                : step.first && !step.second
+                ? 'STEP TWO'
+                : 'STEP THREE'}
+            </p>
+          </strong>
+          <h1>
+            {!step.first
+              ? 'Choose your main ingredient'
+              : step.first && !step.second
+              ? 'Choose your diet'
+              : 'Choose your meal'}
+          </h1>
+        </div>
+        <div>
+          {!step.first && <Input onClick={(input) => addIngredient(input)} />}
+          {!step.second && step.first && (
+            <Filter
+              setDiet={setDiet}
+              diet={diet}
+              type={'diet'}
+              setMeal={setMeal}
+              meal={meal}
+            />
+          )}
+          {step.second && (
+            <Filter
+              setDiet={setDiet}
+              diet={diet}
+              type={'meal'}
+              setMeal={setMeal}
+              meal={meal}
+            />
+          )}
+        </div>
+        <div className={classes.buttonContainer}>
+          {step.first && (
+            <Button buttonStyle={'btn--outline'} onClick={goStepBack}>
+              Back
+            </Button>
+          )}
+          <Button
+            buttonStyle={'btn--outline'}
+            onClick={step.second ? startSearch : goNextStep}
+          >
+            {step.second ? 'Search >' : 'Next >'}
+          </Button>
+        </div>
       </div>
     </div>
   );
