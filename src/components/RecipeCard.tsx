@@ -9,13 +9,14 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ data }) => {
       </div>
       <div>
         <div className={classes.subTittleContainer}>
-          <p> {data.ingredientLines.length} ingredients</p>
-          <p>{~~data.calories} cal.</p>
+          <p>
+            <strong>{data.ingredientLines.length}</strong> ingredients
+          </p>
+          <p>
+            <strong>{~~data.calories}</strong> cal.
+          </p>
         </div>
-
-        <strong>
-          <h5>{data.label}</h5>
-        </strong>
+        <h5>{data.label}</h5>
       </div>
     </div>
   );
