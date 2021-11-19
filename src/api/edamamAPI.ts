@@ -15,7 +15,6 @@ export const getRecipe = async (
 
   try {
     const data = await axios.get(url);
-    console.log(data.data.hits);
     return data.data.hits;
   } catch (error) {
     console.log(error);

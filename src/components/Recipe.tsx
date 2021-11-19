@@ -60,9 +60,11 @@ const Recipe: React.FC = () => {
             <strong>
               <h5>Ingredients:</h5>
             </strong>
-            {activeRecipe.recipe.ingredientLines.map((ingredient: string) => (
-              <p>{ingredient}</p>
-            ))}
+            {activeRecipe.recipe.ingredientLines.map(
+              (ingredient: string, index: number) => (
+                <p key={index}>{ingredient}</p>
+              )
+            )}
           </div>
           <div className={classes.instructionContainer}>
             <strong>

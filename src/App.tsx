@@ -27,7 +27,6 @@ function App() {
   useEffect(() => {
     if (ingredient) {
       setStep((prevState) => ({ ...prevState, first: true }));
-      console.log(ingredient);
     }
   }, [ingredient]);
 
@@ -117,63 +116,73 @@ function App() {
           step={step}
           search={searchForRecipes}
         />
-      ) : null}
-      <div className={'search-container'}>
-        <div className={'input-container'}>
-          <Input onClick={(input) => getData(input)} />
-          <Button onClick={toggleFilter} buttonStyle={'btn--outline'}>
-            Filters
-          </Button>
-        </div>
-        <div className={clsx('filter-container', !showFilter && 'hide')}>
-          <div>
-            <p>Diet:</p>
-            <Filter
-              setDiet={setDiet}
-              diet={diet}
-              setMeal={setMeal}
-              meal={meal}
-              filterStyle={true}
-              type={'diet'}
-            />
-          </div>
-          <div>
-            <p>Meal:</p>
-            <Filter
-              setDiet={setDiet}
-              diet={diet}
-              setMeal={setMeal}
-              meal={meal}
-              filterStyle={true}
-              type={'meal'}
-            />
-          </div>
-        </div>
-      </div>
-      {searchResult && (
-        <div className={'recipes-seciton'}>
-          {searchResult.length > 0 ? (
-            <div>
-              <h4>
-                Recipes with <strong> {ingredient}</strong>
-              </h4>
-              <div className={'recipes-container'}>
-                {searchResult &&
-                  searchResult.map((recipes: any) => (
-                    <Link
-                      to={{
-                        pathname: `/recipe/${recipes.recipe.label}`,
-                      }}
-                    >
-                      <RecipeCard data={recipes.recipe} />
-                    </Link>
-                  ))}
+      ) : (
+        <>
+          <div className={'search-container'}>
+            <div className={'input-container'}>
+              <Input onClick={(input) => getData(input)} />
+              <Button onClick={toggleFilter} buttonStyle={'btn--outline'}>
+                Filters
+              </Button>
+            </div>
+            <div className={clsx('filter-container', !showFilter && 'hide')}>
+              <div>
+                <strong>
+                  <p>Diet:</p>
+                </strong>
+                <Filter
+                  setDiet={setDiet}
+                  diet={diet}
+                  setMeal={setMeal}
+                  meal={meal}
+                  filterStyle={true}
+                  type={'diet'}
+                />
+              </div>
+              <div>
+                <strong>
+                  <p>Meal:</p>
+                </strong>
+                <Filter
+                  setDiet={setDiet}
+                  diet={diet}
+                  setMeal={setMeal}
+                  meal={meal}
+                  filterStyle={true}
+                  type={'meal'}
+                />
               </div>
             </div>
-          ) : (
-            <NotFound />
+          </div>
+          {searchResult && (
+            <div className={'recipes-seciton'}>
+              {searchResult.length > 0 ? (
+                <div>
+                  <h4>
+                    Recipes with <strong> {ingredient}</strong>
+                  </h4>
+                  <div className={'recipes-container'}>
+                    {searchResult &&
+                      searchResult.map((recipes: any) => (
+                        <Link
+                          to={{
+                            pathname: `/recipe/${recipes.recipe.label}`,
+                          }}
+                        >
+                          <RecipeCard
+                            data={recipes.recipe}
+                            key={recipes.recipe.label}
+                          />
+                        </Link>
+                      ))}
+                  </div>
+                </div>
+              ) : (
+                <NotFound />
+              )}
+            </div>
           )}
-        </div>
+        </>
       )}
     </div>
   );

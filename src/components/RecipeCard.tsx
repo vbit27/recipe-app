@@ -3,7 +3,7 @@ import React from 'react';
 
 const RecipeCard: React.FC<RecipeCardProps> = ({ data }) => {
   return (
-    <div className={classes.container}>
+    <div key={data.label} className={classes.container}>
       <div className={classes.imageContainer}>
         <img src={data.image} alt={data.label} />
       </div>

@@ -1,7 +1,6 @@
 import classes from './StepsSection.module.css';
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '../shared/Button';
-import IngredientFilter from './IngredientFilter';
 import Filter from './Filter';
 import Input from '../shared/Input';
 

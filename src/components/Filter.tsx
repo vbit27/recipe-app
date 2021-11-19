@@ -1,5 +1,5 @@
 import classes from './Filter.module.css';
-import React, { useState } from 'react';
+import React from 'react';
 import IconBtn from '../shared/IconBtn';
 
 const Filter: React.FC<FilterProps> = ({

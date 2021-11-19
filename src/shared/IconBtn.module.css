@@ -21,19 +21,28 @@ img {
   width: 40px;
 }
 
-.filter {
-  width: fit-content;
-  height: fit-content;
-  padding: 0.5rem 1rem;
-  background-color: transparent;
-}
-
 .active {
   background-color: #ff6347;
 }
 
 .active:hover {
   background-color: #ff6347;
+}
+
+.filter {
+  width: fit-content;
+  height: fit-content;
+  background-color: transparent;
+  font-weight: 400;
+}
+
+.filter:hover {
+  background-color: transparent;
+}
+
+.filter.active p {
+  color: #ff6347;
+  text-decoration: underline;
 }
 
 @media only screen and (max-width: 400px) {
