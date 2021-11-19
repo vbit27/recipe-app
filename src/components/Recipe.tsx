@@ -18,7 +18,7 @@ const Recipe: React.FC = () => {
     setActiveRecipe(recipes);
   }, []);
 
-  const goToInstructions = () => {};
+  window.scrollTo(0, 0);
 
   if (activeRecipe) {
     return (
@@ -26,7 +26,7 @@ const Recipe: React.FC = () => {
         <div className={classes.heroSection}>
           <div className={classes.titleSection}>
             <Link to={'/'}>
-              <Button buttonStyle={'btn--main'}> -- Back to recipes</Button>
+              <Button buttonStyle={'btn--main'}>Back to recipes</Button>
             </Link>
             <div className={classes.titleContainer}>
               <div className={classes.subtittleContainer}>
@@ -34,10 +34,14 @@ const Recipe: React.FC = () => {
                   <strong>{activeRecipe.recipe.ingredientLines.length}</strong>
                   INGREDIENTS
                 </p>
+                {activeRecipe.recipe.totalTime !== 0 ? (
+                  <p>
+                    <strong>{activeRecipe.recipe.totalTime}</strong> MINUTES
+                  </p>
+                ) : null}
                 <p>
-                  <strong>{activeRecipe.recipe.totalTime}</strong> MINUTES
+                  <strong>{~~activeRecipe.recipe.calories}</strong>CALORIES
                 </p>
-                <p>SERVINGS</p>
               </div>
               <h2>
                 <strong>{activeRecipe.recipe.label}</strong>
@@ -62,7 +66,7 @@ const Recipe: React.FC = () => {
           </div>
           <div className={classes.instructionContainer}>
             <strong>
-              <h5>Preperations</h5>
+              <h5>Preperation</h5>
             </strong>
             <p>
               {`This recipe is provided by ${activeRecipe.recipe.source}. 

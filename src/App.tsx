@@ -5,11 +5,11 @@ import StepsSection from './components/StepsSection';
 import Header from './components/Header';
 import Input from './shared/Input';
 import Filter from './components/Filter';
-import { data } from './api/data';
 import RecipeCard from './components/RecipeCard';
 import { Link } from 'react-router-dom';
 import Button from './shared/Button';
 import clsx from 'clsx';
+import NotFound from './components/NotFound';
 
 function App() {
   const [ingredient, setIngredient] = useState<null | string>(null);
@@ -20,7 +20,7 @@ function App() {
     second: false,
     third: false,
   });
-  const [searchResult, setSearchResult] = useState<any>();
+  const [searchResult, setSearchResult] = useState<any>(null);
   const [showFilter, setShowFilter] = useState(false);
 
   //after pressing enter inside input field, go to next step
@@ -150,31 +150,33 @@ function App() {
           </div>
         </div>
       </div>
-      <div className={'recipes-seciton'}>
-        <h4>
-          Recipes with <strong> {ingredient}</strong>
-        </h4>
-
-        <div className={'recipes-container'}>
-          {searchResult &&
-            searchResult.map((recipes: any) => (
-              <Link
-                to={{
-                  pathname: `/recipe/${recipes.recipe.label}`,
-                }}
-              >
-                <RecipeCard data={recipes.recipe} />
-              </Link>
-            ))}
+      {searchResult && (
+        <div className={'recipes-seciton'}>
+          {searchResult.length > 0 ? (
+            <div>
+              <h4>
+                Recipes with <strong> {ingredient}</strong>
+              </h4>
+              <div className={'recipes-container'}>
+                {searchResult &&
+                  searchResult.map((recipes: any) => (
+                    <Link
+                      to={{
+                        pathname: `/recipe/${recipes.recipe.label}`,
+                      }}
+                    >
+                      <RecipeCard data={recipes.recipe} />
+                    </Link>
+                  ))}
+              </div>
+            </div>
+          ) : (
+            <NotFound />
+          )}
         </div>
-      </div>
+      )}
     </div>
   );
 }
 
 export default App;
-
-/*
-
-
-      */
