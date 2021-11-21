@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({
     <>
       <div className={classes.container} onClick={resetSettings}>
         <strong>
-          <p>RECIPE</p>
+          <h4>RECIPE</h4>
         </strong>
       </div>
     </>
