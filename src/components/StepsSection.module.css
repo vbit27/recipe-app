@@ -1,17 +1,26 @@
 .stepsContainer {
-  background-color: #fbe0dc;
   padding: 0 1rem;
+  background: url(/src/assets/images/background.svg) no-repeat right bottom
+    fixed;
+  background-color: #fbe0dc;
 }
 
 .container {
   height: 95vh;
-  background-color: #fbe0dc;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 6rem;
   width: fit-content;
   margin: 0 0 0 10%;
+}
+
+.container h1 {
+  background-color: #fbe0dc;
+}
+
+.container p {
+  background-color: #fbe0dc;
 }
 
 .buttonContainer {
@@ -22,5 +31,6 @@
 @media only screen and (max-width: 700px) {
   .container {
     margin: 0;
+    background-color: #fbe0dc;
   }
 }
