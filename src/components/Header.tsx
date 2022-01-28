@@ -19,9 +19,7 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <>
       <div className={classes.container} onClick={resetSettings}>
-        <strong>
-          <h4>RECIPE</h4>
-        </strong>
+        <h5>k.y.h.</h5>
       </div>
     </>
   );
