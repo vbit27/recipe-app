@@ -13,6 +13,10 @@
   transition: all 0.3s ease;
 }
 
+.container p {
+  background-color: transparent;
+}
+
 .container:hover {
   background-color: #ffb1a3;
 }

@@ -33,4 +33,8 @@
     margin: 0;
     background-color: #fbe0dc;
   }
+
+  .stepsContainer {
+    background: #fbe0dc;
+  }
 }
