@@ -15,7 +15,7 @@ const NotFound: React.FC = () => {
       <h2>Something went wrong :/</h2>
       <h5>
         Try searching for a different ingredients. You can clear your search by
-        clicking the logo
+        clicking at the logo.
       </h5>
     </div>
   );
