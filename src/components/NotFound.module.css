@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 2rem;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  padding: 1rem 1rem;
+}
+
+.container h2 {
+  color: #ff6347;
+}

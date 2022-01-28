@@ -1,0 +1,17 @@
+.container {
+  height: 5vh;
+  display: flex;
+  background-color: #fbe0dc;
+  align-items: center;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.container p {
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.container h5 {
+  cursor: pointer;
+}

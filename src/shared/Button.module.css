@@ -1,0 +1,25 @@
+.btn {
+  font-size: 1.2rem;
+  font-weight: 500;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+}
+
+.btn--main {
+  background-color: black;
+  color: white;
+  border-radius: 15px;
+  padding: 0.5em 2em 0.5em 2em;
+}
+
+.btn--main:hover {
+  background-color: rgb(43, 42, 42);
+}
+
+.btn--outline {
+  border: none;
+  background-color: transparent;
+}

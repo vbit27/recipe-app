@@ -1,0 +1,61 @@
+.container {
+  width: 100%;
+}
+
+.heroSection {
+  display: flex;
+  gap: 1rem;
+  background-color: #fbe0dc;
+  padding: 3rem;
+}
+
+.titleSection {
+  flex: 5;
+  display: grid;
+  gap: 3rem;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.subtittleContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.imageSection {
+  flex: 2;
+  margin: auto 0;
+}
+
+.imageSection img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.detailSection {
+  max-width: 1200px;
+  margin: 3rem auto 3rem auto;
+  padding: 3rem;
+  display: grid;
+  gap: 3rem;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.detailSection h5 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.detailSection p {
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 900px) {
+  .heroSection {
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
