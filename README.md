@@ -59,8 +59,6 @@
 
 This App takes advantage of The Edamam API to show various recipes based on the main ingredient of your choice. To refine your search even more you can filter based on your diet and/or the type of meal.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 ### Built With
 
 - [Edamam API](https://www.edamam.com/)
@@ -115,6 +113,10 @@ If you have a suggestion that would make this better, please fork the repo and c
 5. Open a Pull Request
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+## Future Work
+
+- Clear local storage when clicking logo
 
 <!-- LICENSE -->
 
