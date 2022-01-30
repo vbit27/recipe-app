@@ -33,20 +33,21 @@
   <h3 align="center">Kill Your Hunger</h3>
 
   <p align="center">
-    An awesome place to find your next recipe with the main ingredient that you have at home in three simple steps.
+    An App to help you find your next meal in three easy steps. All you need is one main ingredient that you have available.
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/vbit27/recipe-app"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/vbit27/recipe-app">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/vbit27/recipe-app/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/vbit27/recipe-app/issues">Request Feature</a>
   </p>
 </div>
 
 <!-- TABLE OF CONTENTS -->
+
 <details>
   <summary>Table of Contents</summary>
   <ol>
