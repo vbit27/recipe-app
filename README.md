@@ -13,7 +13,7 @@
   <h3 align="center">Kill Your Hunger</h3>
 
   <p align="center">
-    An App to help you find your next meal in three easy steps. All you need is one main ingredient that you have available.
+    An App to help you decide for your next meal in three easy steps. All you need is one main ingredient that you have available.
     <br />
     <a href="https://github.com/vbit27/recipe-app"><strong>Explore the docs »</strong></a>
     <br />
@@ -45,7 +45,6 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -58,17 +57,7 @@
 
 ![Recipe App Screen Shot](https://user-images.githubusercontent.com/75995237/151698679-ab5d18a2-5ba9-4cd0-b538-4b34d3d71516.gif)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
-
-Here's why:
-
-- Your time should be focused on creating something amazing. A project that solves a problem and helps others
-- You shouldn't be doing the same tasks over and over like creating a README from scratch
-- You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
+This App takes advantage of The Edamam API to show various recipes based on the main ingredient of your choice. To refine your search even more you can filter based on your diet and/or the type of meal.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -105,8 +94,8 @@ To get a local copy up and running follow these simple example steps.
 3. Create an `.env` file inside the root folder
 4. Enter your API in `.env`
    ```js
-   const REACT_APP_API_KEY = 'ENTER YOUR KEY';
-   const REACT_APP_API_ID = 'ENTER YOUR ID';
+   const REACT_APP_API_KEY = 'ENTER YOUR API KEY';
+   const REACT_APP_API_ID = 'ENTER YOUR API ID';
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -141,15 +130,13 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Vasil Bituni - [Linkedin](www.linkedin.com/in/vasilis-bitounis) - vasil.bituni@gmail.com
 
-Project Link: [](https://github.com/vbit27/recipe-app)
+Project Link: [https://github.com/vbit27/recipe-app](https://github.com/vbit27/recipe-app)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 
 ## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
 - [clsx](https://www.npmjs.com/package/clsx)
 - [Background icons](https://www.figma.com/@furquan101)
