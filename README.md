@@ -30,10 +30,10 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">Kill Your Hunger</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    An awesome place to find your next recipe with the main ingredient that you have at home in three simple steps.
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
@@ -76,7 +76,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![Recipe App Screen Shot](https://user-images.githubusercontent.com/75995237/151698679-ab5d18a2-5ba9-4cd0-b538-4b34d3d71516.gif)
 
 There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
