@@ -6,24 +6,20 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="src/assets/images/Burger.svg" alt="Logo" width="80" height="80">
-  </a>
 
   <h3 align="center">Kill Your Hunger</h3>
 
   <p align="center">
-    An App to help you decide for your next meal in three easy steps. All you need is one main ingredient that you have available.
+    An App to help you decide for your next meal in three easy steps. All you need is one main ingredient.
     <br />
     <a href="https://github.com/vbit27/recipe-app"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/vbit27/recipe-app">View Demo</a>
+    <a href="https://kill-your-hunger.netlify.app/">View Demo</a>
     ·
     <a href="https://github.com/vbit27/recipe-app/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/vbit27/recipe-app/issues">Request Feature</a>
-  </p>
+    </p>
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -66,6 +62,7 @@ This App takes advantage of The Edamam API to show various recipes based on the 
 - [React Router](https://reactrouter.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Axios](https://axios-http.com/docs/intro)
+- Local Storage
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -117,6 +114,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 ## Future Work
 
 - Clear local storage when clicking logo
+- Load more results
 
 <!-- LICENSE -->
 
